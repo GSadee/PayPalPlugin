@@ -2,7 +2,7 @@ import { Controller } from '@hotwired/stimulus';
 import { paymentPageSession } from '../scripts/paypal-payment-page';
 
 export default class extends Controller {
-    static targets = ['form', 'submit', 'number', 'expiry', 'cvv'];
+    static targets = ['form', 'number', 'expiry', 'cvv'];
 
     static values = {
         scriptUrl: String,
@@ -23,7 +23,7 @@ export default class extends Controller {
                 createOrderUrl: this.createOrderUrlValue,
             });
 
-            if (!session.isEligible('card')) {
+            if (!session.isEligible('advanced_cards')) {
                 return;
             }
 
@@ -107,8 +107,9 @@ export default class extends Controller {
     }
 
     setSubmitting(submitting) {
-        if (this.hasSubmitTarget) {
-            this.submitTarget.disabled = submitting;
+        const submitButton = this.formTarget.querySelector('button[type="submit"]');
+        if (submitButton !== null) {
+            submitButton.disabled = submitting;
         }
     }
 }
