@@ -63,8 +63,9 @@
             <argument type="service" id="sylius_paypal.manager.payment_state" />
             <argument type="service" id="router" />
             <argument type="service" id="sylius_paypal.provider.order" />
-            <argument type="service" id="sylius_paypal.api.authorize_client" />
-            <argument type="service" id="sylius_paypal.api.complete_order" />
+            <argument type="service" id="sylius_paypal.api.cache_authorize_client" />
+            <argument type="service" id="sylius_paypal.api.order_details" />
+            <argument type="service" id="sylius_paypal.verifier.three_d_secure" />
         </service>
 
         <service id="sylius_paypal.controller.create_paypal_order_from_payment_page" class="Sylius\PayPalPlugin\Controller\CreatePayPalOrderFromPaymentPageAction">
