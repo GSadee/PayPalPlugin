@@ -42,7 +42,7 @@ final readonly class PayPalWebSdkConfigurationProvider implements PayPalWebSdkCo
         ];
 
         if (null !== $locale) {
-            $instanceConfig['locale'] = $locale;
+            $instanceConfig['locale'] = str_replace('_', '-', $locale);
         }
 
         return $instanceConfig;

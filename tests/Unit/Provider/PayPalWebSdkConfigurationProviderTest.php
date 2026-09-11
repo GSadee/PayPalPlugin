@@ -76,10 +76,22 @@ final class PayPalWebSdkConfigurationProviderTest extends TestCase
         $config = $this->provider->getInstanceConfig(
             $this->createMock(ChannelInterface::class),
             'checkout',
+            locale: 'en-US',
+        );
+
+        self::assertSame('en-US', $config['locale']);
+    }
+
+    #[Test]
+    public function it_hands_the_sdk_a_locale_it_understands(): void
+    {
+        $config = $this->provider->getInstanceConfig(
+            $this->createMock(ChannelInterface::class),
+            'checkout',
             locale: 'en_US',
         );
 
-        self::assertSame('en_US', $config['locale']);
+        self::assertSame('en-US', $config['locale']);
     }
 
     #[Test]
