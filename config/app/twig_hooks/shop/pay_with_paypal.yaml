@@ -1,0 +1,9 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_paypal.shop.pay_with_paypal.content':
+            paypal:
+                template: '@SyliusPayPalPlugin/shop/pay_with_paypal/content/methods/paypal.html.twig'
+                priority: 0
+            card:
+                template: '@SyliusPayPalPlugin/shop/pay_with_paypal/content/methods/card.html.twig'
+                priority: -100

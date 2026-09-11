@@ -113,13 +113,11 @@
         </service>
 
         <service id="sylius_paypal.controller.pay_with_paypal_form" class="Sylius\PayPalPlugin\Controller\PayWithPayPalFormAction">
-            <argument type="service" id="twig" />
-            <argument type="service" id="sylius.repository.payment" />
-            <argument type="service" id="sylius_paypal.provider.available_countries" />
-            <argument type="service" id="sylius_paypal.api.cache_authorize_client" />
-            <argument type="service" id="sylius_paypal.api.identity" />
-            <argument type="service" id="sylius_paypal.processor.locale" />
-            <argument type="service" id="sylius_paypal.provider.paypal_configuration" />
+            <argument key="$twig" type="service" id="twig" />
+            <argument key="$paymentRepository" type="service" id="sylius.repository.payment" />
+            <argument key="$localeProcessor" type="service" id="sylius_paypal.processor.locale" />
+            <argument key="$webSdkConfigurationProvider" type="service" id="sylius_paypal.provider.paypal_web_sdk_configuration" />
+            <argument key="$router" type="service" id="router" />
         </service>
 
         <service id="sylius_paypal.controller.process_paypal_order" class="Sylius\PayPalPlugin\Controller\ProcessPayPalOrderAction">
